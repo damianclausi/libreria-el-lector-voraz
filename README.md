@@ -1,460 +1,212 @@
-# El Lector Voraz – Backend (Entrega Final) - 2da PARTE
+# El Lector Voraz – Sistema de Gestión para Librería
 
-Este proyecto fue desarrollado como parte del trabajo integrador de la materia Desarrollo Web Backend – Tecnicatura en Desarrollo de Software (IFTS 29).
+<div align="center">
 
-## Cómo Ejecutar el Proyecto
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-5.1.0-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-8.x-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Pug](https://img.shields.io/badge/Pug-3.0.3-A86454?style=for-the-badge&logo=pug&logoColor=white)](https://pugjs.org/)
+[![Jest](https://img.shields.io/badge/Jest-29.7.0-C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/)
+
+**Solución integral para la digitalización administrativa y comercial de librerías**  
+*Gestión de stock · Dashboard de ventas · Control de proveedores · Módulo de Cafetería*
+
+[Ver Repositorio Original](https://github.com/TDS-IFTS29/El-Quinto-Elemento_Libreria-El-lector-Voraz_2_Comision-D)
+
+</div>
+
+---
+
+## Tabla de Contenidos
+- [Origen y Créditos](#origen-y-créditos)
+- [Diferenciación de Portfolio](#diferenciación-de-portfolio)
+- [Sobre el Proyecto](#sobre-el-proyecto)
+- [Características Principales](#características-principales)
+- [Stack Tecnológico](#stack-tecnológico)
+- [Capturas de Pantalla](#capturas-de-pantalla)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Sistema de Permisos](#sistema-de-permisos)
+- [Testing](#testing)
+
+---
+
+## Origen y Créditos
+> **Este proyecto fue desarrollado como el Trabajo Integrador Final** de la materia Desarrollo Web Backend en la Tecnicatura en Desarrollo de Software (IFTS 29).
+
+### Equipo Original
+- **Clausi Damián Andrés**: Diseño de Base de Datos, Módulo de Librería con Reportes, CRUD de productos y modularización.
+- **Descosido Cristian**: Gestión de proveedores, Vistas dinámicas, Módulo Coffee con Reportes y Sistema de Login.
+- **César Antonio Gill**: Registro de ventas, Módulo Utilería, Reportes y Despliegue en Atlas/Render.
+
+---
+
+## Diferenciación de Portfolio
+Este repositorio es mi **versión personal de portfolio** adaptada para demostrar mis habilidades como desarrollador Backend de forma independiente.
+
+### ¿Por qué este repositorio?
+- **Portfolio Profesional**: Optimizado para ser presentado a reclutadores, destacando mi rol en el diseño de la base de datos y la arquitectura MVC.
+- **Mejoras Implementadas**: Refactorización de controladores, optimización de queries en Mongoose y documentación técnica exhaustiva.
+- **Demostración de Habilidades**: Muestra mi capacidad de gestionar un sistema complejo con múltiples módulos y roles de usuario.
+
+---
+
+## Sobre el Proyecto
+### El Lector Voraz (SGE)
+El sistema digitaliza la gestión de una librería física que integra servicios de cafetería y venta de utilería. El objetivo principal es centralizar la toma de decisiones basada en datos reales de ventas y stock.
+
+### Problema que Resuelve
+Muchas librerías pequeñas gestionan sus inventarios de forma manual o descentralizada, lo que dificulta el seguimiento de ventas, la reposición de stock y la rentabilidad por departamentos.
+
+### Solución Implementada
+Una aplicación web robusta con arquitectura **MVC**, que ofrece una **API RESTful** para la manipulación de datos y un cliente dinámico con **vistas Pug** renderizadas del lado del servidor, integrando reportes estadísticos en tiempo real.
+
+---
+
+## Características Principales
+
+#### 📚 Módulo de Librería
+- CRUD completo de libros con gestión de stock mínimo y alertas.
+- Historial de ventas detallado y facturación.
+
+#### ☕ Módulo de Cafetería
+- Venta de productos de consumo inmediato con control de insumos.
+- Reportes específicos de consumo diario.
+
+#### 📎 Módulo de Utilería
+- Gestión de artículos de papelería y oficina.
+- Tracking de reposición de proveedores.
+
+#### 📊 Dashboard y Reportes
+- Visualización dinámica de productos más vendidos.
+- Gráficos de tendencias de ventas semanales.
+
+---
+
+## Stack Tecnológico
+
+### Backend
+```yaml
+Core:
+  - Node.js (v18+)
+  - Express.js (v5.1.0)
+
+Base de Datos:
+  - MongoDB
+  - Mongoose (ODM)
+
+Autenticación:
+  - Express Session
+  - Bcrypt (Hashing de contraseñas)
+
+Renderizado:
+  - Pug (Template engine)
+```
+
+### Arquitectura
+```
+Proyecto
+├── controllers/       # Lógica de negocio (MVC)
+├── models/            # Esquemas de Mongoose
+├── routes/            # Definición de rutas (Web y API)
+├── middleware/        # Autenticación y permisos (RBAC)
+├── views/             # Plantillas Pug
+├── public/            # Archivos estáticos (CSS, JS, Img)
+└── __tests__/         # Suite de testing con Jest
+```
+
+---
+
+## Capturas de Pantalla
+
+#### Dashboard Principal
+![Dashboard](./public/img/screenshots/dashboard.png)
+*Vista general del sistema con estadísticas y accesos rápidos.*
+
+#### Catálogo de Libros
+![Catálogo](./public/img/screenshots/catalogo_libros.png)
+*Gestión de inventario con indicadores de stock bajo y acciones administrativas.*
+
+#### Registro de Ventas
+![Ventas](./public/img/screenshots/ventas.png)
+*Interfaz fluida para el registro de transacciones en los tres departamentos.*
+
+#### Reportes Estadísticos
+![Reportes](./public/img/screenshots/reportes.png)
+*Visualización de datos sobre productos más vendidos y tendencias de la semana.*
+
+---
+
+## Instalación
+
+### Requisitos Previos
+- Node.js v18.0.0 o superior
+- MongoDB local o Atlas
+- npm
 
 ### 1. Clonar el repositorio
-
 ```bash
-git clone git@github.com:TDS-IFTS29/El-Quinto-Elemento_Libreria-El-lector-Voraz_2_Comision-D.git
+git clone https://github.com/damianclausi/libreria-el-lector-voraz.git
+cd libreria-el-lector-voraz
 ```
 
 ### 2. Instalar dependencias
-
 ```bash
 npm install
 ```
 
-### 3. Crear .env en el directorio raiz con los siguientes datos para pruebas locales
-
+### 3. Configurar variables de entorno
+Crea un archivo `.env` en la raíz con:
 ```bash
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/el-lector-voraz
-SESSION_SECRET=el-lector-voraz-super-secret-key-2024
+SESSION_SECRET=tu-clave-secreta-aqui
 ```
 
-### 4. Iniciar MongoDB localmente
-
-Debe tener instalado MongoDB localmente e iniciado.
-
-### 5. Crear la base de datos con datos de ejemplo
-
-Para facilitar las pruebas, puedes crear la base de datos `el-lector-voraz` con datos de ejemplo ejecutando el siguiente script:
-
+### 4. Poblar la base de datos
+Ejecuta el script de semilla para cargar datos de prueba:
 ```bash
 node crear_base_el_lector_voraz.js
 ```
 
-Esto eliminará los productos, proveedores y el historial de ventas existentes, y cargará datos de ejemplo automáticamente (incluye 10 ventas de prueba asociadas a productos reales).
-
-> **Actualización importante:**
-> Desde la migración a MongoDB, la aplicación utiliza una base de datos MongoDB y modelos Mongoose para almacenar y gestionar los datos. La carpeta `data/` y los archivos JSON han sido eliminados y ya no son utilizados por la aplicación.
->
-> **Usuarios de prueba creados automáticamente:**
->
-> **Administradores:**
->
-> - **Juan Pérez** (<juan.perez@lectorvoraz.com>) - Contraseña: `1234`
-> - **admin** (admin) - Contraseña: `1234` *(usuario de compatibilidad)*
->
-> **Empleados:**
->
-> - **Antonio Gill** (<antonio.gill@lectorvoraz.com>) - Contraseña: `1234`
-> - **Cristian Descosido** (<cristian.descosido@lectorvoraz.com>) - Contraseña: `1234`
-> - **Damian Clausi** (<damian.clausi@lectorvoraz.com>) - Contraseña: `1234`
->
-> **Nota:** Todos los usuarios (administradores y empleados) tienen la misma contraseña: `1234`
-
-### 6. Iniciar el servidor en modo desarrollo (con reinicio automático)
-
+### 5. Iniciar la aplicación
 ```bash
+# Modo Desarrollo
 npm run dev
+
+# Modo Producción
+npm start
 ```
 
-> Si prefieres iniciar el servidor en modo producción, puedes usar:
->
-> ```bash
-> npm start
-> ```
+---
 
-### 7. Acceder en el navegador
+## Uso
 
-```text
-http://localhost:3000
-```
+### Usuarios de Prueba (Contraseña: 1234)
+| Usuario | Email | Rol |
+|---------|-------|-----|
+| Juan Pérez | juan.perez@lectorvoraz.com | Administrador |
+| Antonio Gill | antonio.gill@lectorvoraz.com | Empleado |
 
-## Objetivo del Proyecto
+---
 
-Desarrollar una solución backend integral con Node.js y Express que permita digitalizar la gestión administrativa y comercial de una librería, abarcando la gestión de productos, registro de ventas y administración de proveedores. Esta solución se estructura como una API RESTful que proporciona operaciones CRUD sobre los datos almacenados en una base de datos MongoDB (antes archivos JSON), garantizando una arquitectura desacoplada. Además, se implementa un cliente basado en vistas Pug y JavaScript que interactúa con la API a través de fetch. El sistema busca facilitar el control de stock, mejorar el seguimiento de las transacciones y centralizar la información relevante para la toma de decisiones.
+## Sistema de Permisos
+Implementa un control de acceso basado en roles (**RBAC**):
 
-## Tecnologías Utilizadas
+- **Administrador**: Control total sobre usuarios, libros, proveedores y reportes globales.
+- **Empleado**: Registro de ventas, visualización de catálogo y gestión de su propio perfil.
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- Pug
-- JSON
-- Fetch API
-- Thunder Client / Postman
-- Git y GitHub
+---
 
-## Funcionalidades Implementadas
-
-- CRUD completo de productos, proveedores y ventas
-- Reportes dinámicos:
-  - Productos más vendidos
-  - Ventas por semana
-- Interfaz desacoplada usando `fetch`
-- Vistas Pug dinámicas con render del lado del cliente
-- Código modular y organizado por MVC
-- Uso de programación orientada a objetos
-
-## Estructura del Proyecto
+## Testing
+La aplicación cuenta con una amplia cobertura de tests automatizados para asegurar la integridad de la API.
 
 ```bash
-/el-lector-voraz/
-├── .env
-├── .gitignore
-├── app.js
-├── package.json
-├── README.md
-├── jest.config.js
-├── jest.setup.js
-├── crear_base_el_lector_voraz.js
-├── __tests__/
-│   ├── test-helpers.js
-│   ├── api.cafeteria.test.js
-│   ├── api.libros.test.js
-│   ├── api.libros.test.new.js
-│   ├── api.productos.test.js
-│   ├── api.proveedores.test.js
-│   ├── api.usuarios.test.js
-│   ├── api.usuarios.test.new.js
-│   ├── api.utileria.test.js
-│   └── api.ventas.test.js
-├── controllers/
-│   ├── cafeteriaController.js
-│   ├── homeController.js
-│   ├── librosController.js
-│   ├── proveedoresController.js
-│   ├── usuariosController.js
-│   ├── utileriaController.js
-│   └── ventasController.js
-├── middleware/
-│   └── auth.js
-├── models/
-│   ├── Cafeteria.js
-│   ├── Libro.js
-│   ├── Proveedor.js
-│   ├── Usuario.js
-│   ├── Utileria.js
-│   └── Venta.js
-├── public/
-│   ├── css/
-│   │   └── styles.css
-│   ├── img/
-│   │   ├── banner-libreria.webp
-│   │   └── logo-lector-voraz.png
-│   └── js/
-│       ├── dashboard.js
-│       ├── cafeteria/
-│       ├── libros/
-│       ├── proveedores/
-│       ├── usuarios/
-│       └── utileria/
-├── routes/
-│   ├── apiDocs.js
-│   ├── auth.js
-│   ├── cafeteria.js
-│   ├── home.js
-│   ├── libros.js
-│   ├── proveedores.js
-│   ├── usuarios.js
-│   ├── utileria.js
-│   └── api/
-│       ├── cafeteria.js
-│       ├── libros.js
-│       ├── proveedores.js
-│       ├── usuarios.js
-│       ├── utileria.js
-│       └── ventas.js
-└── views/
-    ├── api_docs.pug
-    ├── dashboard.pug
-    ├── error.pug
-    ├── layout.pug
-    ├── login.pug
-    ├── cafeteria/
-    ├── libros/
-    ├── proveedores/
-    ├── usuarios/
-    └── utileria/
+# Ejecutar todos los tests
+npm test
 ```
-
-> **Nota:** Todos los datos actuales se almacenan en MongoDB. Los modelos y controladores están adaptados para trabajar con Mongoose.
-
-## Rutas Principales
-
-### Autenticación
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /auth/login                      | Vista de login                           |
-| POST   | /auth/login                      | Procesar login                           |
-| POST   | /auth/logout                     | Cerrar sesión                            |
-| GET    | /auth/logout                     | Cerrar sesión (método GET)               |
-
-### Dashboard y Principal
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /                                | Dashboard principal                      |
-
-### Libros
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /libros/                         | Vista de catálogo de libros (Pug)        |
-| GET    | /libros/nuevo                    | Formulario nuevo libro                   |
-| GET    | /libros/editar/:id               | Formulario de edición de libro           |
-| GET    | /libros/ventas                   | Historial de ventas de libros            |
-| GET    | /libros/ventas/nueva             | Formulario registrar venta de libro      |
-| GET    | /libros/ventas/reportes          | Vista con reportes dinámicos             |
-| GET    | /libros/ventas/editar/:id        | Formulario editar venta                  |
-| GET    | /libros/ventas/factura/:id       | Factura de venta de libro                |
-
-### Proveedores
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /proveedores/                    | Vista de proveedores con acciones        |
-| GET    | /proveedores/nuevo               | Formulario nuevo proveedor               |
-| GET    | /proveedores/editar/:id          | Formulario de edición de proveedor       |
-
-### Usuarios
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /usuarios/catalogo               | Catálogo de usuarios                     |
-| GET    | /usuarios/nuevo                  | Formulario nuevo usuario                 |
-| GET    | /usuarios/editar/:id             | Formulario editar usuario                |
-
-### Cafetería
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /cafeteria/                      | Catálogo de productos de cafetería       |
-| GET    | /cafeteria/nuevo                 | Formulario nuevo producto de cafetería   |
-| GET    | /cafeteria/editar/:id            | Formulario editar producto de cafetería  |
-| GET    | /cafeteria/vender                | Formulario vender producto de cafetería  |
-| GET    | /cafeteria/reportes              | Reportes de ventas de cafetería          |
-| GET    | /cafeteria/factura/:ventaId      | Factura de venta de cafetería            |
-
-### Utilería
-
-| Método | Ruta                              | Descripción                              |
-|--------|------------------------------------|------------------------------------------|
-| GET    | /utileria/                       | Catálogo de productos de utilería        |
-| GET    | /utileria/nuevo                  | Formulario nuevo producto de utilería    |
-| GET    | /utileria/editar/:id             | Formulario editar producto de utilería   |
-| GET    | /utileria/vender                 | Formulario vender producto de utilería   |
-| GET    | /utileria/reportes               | Reportes de ventas de utilería           |
-| GET    | /utileria/factura/:id            | Factura de venta de utilería             |
-
-## Endpoints RESTful principales
-
-### Autenticación API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| POST   | /auth/login                 | Iniciar sesión en el sistema                |
-| POST   | /auth/logout                | Cerrar sesión del usuario actual            |
-| GET    | /auth/logout                | Cerrar sesión (método GET)                  |
-
-### Libros API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/libros                 | Listar libros                               |
-| GET    | /api/libros/:id             | Obtener un libro                            |
-| POST   | /api/libros                 | Crear libro (incluye `stockMinimo`)         |
-| PATCH  | /api/libros/:id             | Actualizar libro (incluye `stockMinimo`)    |
-| PATCH  | /api/libros/:id/sumar-stock | Sumar 1 al stock de un libro (solo admin)   |
-| DELETE | /api/libros/:id             | Eliminar libro (solo admin)                 |
-
-### Proveedores API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/proveedores            | Listar proveedores (filtrar por tipo)       |
-| GET    | /api/proveedores/:id        | Obtener proveedor                           |
-| POST   | /api/proveedores            | Crear proveedor (solo admin)                |
-| PATCH  | /api/proveedores/:id        | Actualizar proveedor (solo admin)           |
-| DELETE | /api/proveedores/:id        | Eliminar proveedor (solo admin)             |
-
-### Usuarios API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/usuarios               | Listar usuarios (solo admin)                |
-| GET    | /api/usuarios/me            | Obtener datos del usuario actual            |
-| GET    | /api/usuarios/:id           | Obtener usuario (propietario o admin)       |
-| POST   | /api/usuarios               | Crear usuario (solo admin)                  |
-| PUT    | /api/usuarios/:id           | Actualizar usuario (propietario o admin)    |
-| DELETE | /api/usuarios/:id           | Eliminar usuario (solo admin)               |
-
-### Ventas API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/ventas                 | Listar ventas de libros                     |
-| GET    | /api/ventas/:id             | Obtener venta específica                    |
-| POST   | /api/ventas                 | Registrar nueva venta de libro              |
-| PUT    | /api/ventas/:id             | Editar venta existente                      |
-| DELETE | /api/ventas/:id             | Eliminar venta (solo admin)                 |
-| GET    | /api/ventas/mas-vendidos    | Libros más vendidos (con filtro período)    |
-| GET    | /api/ventas/ventas-semana   | Ventas por día de la semana actual          |
-
-### Utilería API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/utileria               | Listar productos de utilería                |
-| GET    | /api/utileria/:id           | Obtener producto de utilería                |
-| POST   | /api/utileria               | Crear producto de utilería (solo admin)     |
-| PATCH  | /api/utileria/:id           | Actualizar producto de utilería (solo admin)|
-| DELETE | /api/utileria/:id           | Eliminar producto de utilería (solo admin)  |
-| PATCH  | /api/utileria/:id/sumar-stock | Sumar 1 al stock (solo admin)             |
-| POST   | /api/utileria/vender        | Registrar venta de utilería                 |
-| GET    | /api/utileria/ventas        | Historial de ventas de utilería             |
-| GET    | /api/utileria/ventas/mas-vendidos | Productos más vendidos con filtro    |
-
-### Cafetería API
-
-| Método | Ruta                        | Descripción                                 |
-|--------|-----------------------------|---------------------------------------------|
-| GET    | /api/cafeteria              | Listar productos de cafetería               |
-| GET    | /api/cafeteria/:id          | Obtener producto de cafetería               |
-| POST   | /api/cafeteria              | Crear producto de cafetería (solo admin)    |
-| PATCH  | /api/cafeteria/:id          | Actualizar producto de cafetería (solo admin)|
-| DELETE | /api/cafeteria/:id          | Eliminar producto de cafetería (solo admin) |
-| POST   | /api/cafeteria/vender       | Registrar venta de cafetería                |
-| GET    | /api/cafeteria/ventas       | Historial de ventas de cafetería            |
-| GET    | /api/cafeteria/ventas/mas-vendidos | Productos más vendidos con filtro   |
-
-## Sistema de Permisos Basados en Roles
-
-### Resumen del Sistema
-
-Se ha implementado exitosamente un sistema completo de permisos basados en roles para la aplicación de gestión de librería. El sistema distingue entre usuarios **Administradores** y **Empleados** con diferentes niveles de acceso.
-
-### Roles y Permisos Implementados
-
-#### Administrador
-
-- **Usuarios**: Crear, leer, actualizar, eliminar cualquier usuario
-- **Libros**: Crear, leer, actualizar, eliminar cualquier libro
-- **Proveedores**: Crear, leer, actualizar, eliminar cualquier proveedor
-- **Ventas**: Leer, crear reportes y estadísticas
-
-#### Empleado
-
-- **Usuarios**: Solo puede ver y editar su propio perfil
-- **Libros**: Solo puede ver libros (sin crear, editar o eliminar)
-- **Proveedores**: Sin acceso (no aparece en el menú)
-- **Ventas**: Crear ventas, ver reportes y estadísticas
-
-### Funcionalidades de Seguridad Implementadas
-
-#### Backend (API y Rutas)
-
-- Middleware de autenticación (`requireAuth`)
-- Middleware de autorización por rol (`requireRole`)
-- Middleware de propiedad de recursos (`requireOwnerOrAdmin`)
-- Validación de permisos en todos los endpoints REST
-- Endpoint `/api/usuarios/me` para obtener datos del usuario actual
-
-#### Frontend (Vistas y JavaScript)
-
-- Menú lateral dinámico basado en rol del usuario
-- Botones de acción condicionales en catálogos
-- Información del usuario actual en sidebar y dashboard
-- Restricciones de acceso a formularios
-- JavaScript que consulta permisos del usuario actual
-
-#### Testing Completo
-
-- Suite completa de tests para todos los endpoints
-- Tests de permisos para cada rol
-- Tests de autenticación y autorización
-- Configuración Jest para ejecución secuencial
-- 123 tests pasando exitosamente
-
-### Archivos del Sistema de Permisos
-
-#### Backend
-
-- `middleware/auth.js` - Middleware de autenticación y autorización
-- `controllers/usuariosController.js` - Lógica de usuarios con permisos
-- `controllers/librosController.js` - Lógica de libros con permisos
-- `controllers/proveedoresController.js` - Lógica de proveedores con permisos
-- `routes/api/*.js` - Rutas API con validación de permisos
-- `routes/usuarios.js` - Rutas de vistas con validación de permisos
-
-#### Frontend
-
-- `views/layout.pug` - Sidebar con información de usuario
-- `views/dashboard.pug` - Dashboard con información de usuario
-- `views/usuarios/catalogo_usuarios.pug` - Catálogo con permisos
-- `views/libros/catalogo_libros.pug` - Catálogo con permisos
-- `public/js/catalogo_usuarios.js` - JavaScript con validación de permisos
-- `public/js/catalogo_libro.js` - JavaScript con validación de permisos
-
-#### Testing
-
-- `__tests__/test-helpers.js` - Utilidades para testing
-- `__tests__/api.usuarios.test.js` - Tests de API de usuarios
-- `__tests__/api.libros.test.js` - Tests de API de libros
-- `__tests__/api.proveedores.test.js` - Tests de API de proveedores
-- `jest.config.js` - Configuración Jest
-- `jest.setup.js` - Setup global para tests
-
-### Validaciones de Seguridad
-
-- Usuarios no autenticados no pueden acceder a recursos protegidos
-- Empleados no pueden acceder a funciones de administrador
-- Empleados solo pueden modificar sus propios datos
-- Validación tanto en backend como frontend
-- Sesiones seguras con Express Session
-- Contraseñas hasheadas con bcrypt
-
-### Estado del Sistema de Permisos
-
-#### Completado y Funcional
-
-- Todos los tests pasan (123/123)
-- Sistema de permisos completamente implementado
-- UI/UX adaptada a roles de usuario
-- Validaciones de seguridad en todos los niveles
-- Documentación completa
-
-El sistema está listo para producción y cumple con todos los requisitos de seguridad y funcionalidad especificados.
-
-### Primera parte
-
-| Integrante               | Rol                                                        |
-|-------------------------|------------------------------------------------------------|
-| Clausi Damián Andrés    | CRUD de productos y modularización del backend             |
-| Descosido Cristian      | Gestión de proveedores y vistas dinámicas                  |
-| César Antonio Gill      | Registro de ventas, reportes y consumo de API con fetch    |
-
-- [Google drive](https://drive.google.com/open?id=1RJ1bpW4hxbWAr_X6nghFqo8siL7cDsBN&usp=drive_fs)
-- [Github](https://github.com/TDS-IFTS29/grupo1_BackEnd_El_Lector_Voraz)
-
-### Segunda parte
-
-| Integrante               | Rol                                                                |
-|-------------------------|---------------------------------------------------------------------|
-| Clausi Damián Andrés    | DISEÑO DE BASE DE DATOS                                                            |
-|                         | MODULO LIBRERIA CON REPORTES                                        |
-|-------------------------|---------------------------------------------------------------------|
-| Descosido Cristian      | MODULO COFFEE CON REPORTES                                          |
-|                         | MODULO LOGIN CON SESION Y CIFRADO                                   |
-|-------------------------|---------------------------------------------------------------------|
-| César Antonio Gill      | MODULO UTILERIA CON REPORTES                                        |
-|                         | MONGO ATLAS Y RENDER                                                |
-
-- [Google drive](https://drive.google.com/open?id=1RJ1bpW4hxbWAr_X6nghFqo8siL7cDsBN&usp=drive_fs)
-- [Github](https://github.com/TDS-IFTS29/El-Quinto-Elemento_Libreria-El-lector-Voraz_2_Comision-D)
+- **Tests de Integración**: 123 tests pasando exitosamente.
+- **Validación de Permisos**: Tests específicos para cada rol de usuario.
+- **Mocking**: Configuración de entorno de prueba aislado en `jest.setup.js`.
+
+---
