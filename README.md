@@ -128,7 +128,7 @@ Proyecto
 *Gestión de inventario con indicadores de stock bajo y acciones administrativas.*
 
 #### Registro de Ventas
-![Ventas](./assets/ui-admin-sales-management.png.png)
+![Ventas](./assets/ui-admin-sales-management.png)
 *Interfaz fluida para el registro de transacciones en los tres departamentos.*
 
 #### Reportes Estadísticos
