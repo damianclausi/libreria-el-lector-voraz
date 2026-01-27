@@ -120,19 +120,19 @@ Proyecto
 ## Capturas de Pantalla
 
 #### Dashboard Principal
-![Dashboard](./public/img/screenshots/dashboard.png)
+![Dashboard](./assets/ui-admin-dashboard-main.png)
 *Vista general del sistema con estadísticas y accesos rápidos.*
 
 #### Catálogo de Libros
-![Catálogo](./public/img/screenshots/catalogo_libros.png)
+![Catálogo](./assets/ui-admin-dashboard-book-inventory.png)
 *Gestión de inventario con indicadores de stock bajo y acciones administrativas.*
 
 #### Registro de Ventas
-![Ventas](./public/img/screenshots/ventas.png)
+![Ventas](./assets/ui-admin-sales-management.png.png)
 *Interfaz fluida para el registro de transacciones en los tres departamentos.*
 
 #### Reportes Estadísticos
-![Reportes](./public/img/screenshots/reportes.png)
+![Reportes](./assets/ui-admin-reports-insights.png)
 *Visualización de datos sobre productos más vendidos y tendencias de la semana.*
 
 ---
@@ -161,6 +161,12 @@ Crea un archivo `.env` en la raíz con:
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/el-lector-voraz
 SESSION_SECRET=tu-clave-secreta-aqui
+```
+
+### 3.5. MongoDB con Docker (Opcional)
+Si prefieres usar Docker en lugar de una instalación local de MongoDB:
+```bash
+docker run -d --name mongodb -p 27017:27017 mongo
 ```
 
 ### 4. Poblar la base de datos
