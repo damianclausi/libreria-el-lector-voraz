@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Hit Render Endpoint
         run: |
-          curl -I https://libreria-el-lector-voraz.onrender.com/healthcheck
+          curl -I https://el-lector-voraz-potc.onrender.com/health
