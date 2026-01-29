@@ -22,7 +22,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { 
+  cookie: {
     secure: false, // Cambiar a true en producción con HTTPS
     maxAge: 24 * 60 * 60 * 1000 // 24 horas
   }
@@ -64,6 +64,11 @@ app.use('/api/utileria', requireAuth, require('./routes/api/utileria'));
 app.use('/api/cafeteria', requireAuth, require('./routes/api/cafeteria'));
 app.use('/api/ventas', requireAuth, require('./routes/api/ventas'));
 app.use('/api/usuarios', requireAuth, require('./routes/api/usuarios')); // API de usuarios
+
+// Ruta simple para monitoreo y keep-alive
+app.get('/healthcheck', (req, res) => {
+  res.status(200).send('Servidor Activo');
+});
 
 // Puerto
 const PORT = process.env.PORT || 3000;

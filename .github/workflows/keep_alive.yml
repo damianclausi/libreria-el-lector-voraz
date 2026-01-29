@@ -1,0 +1,15 @@
+name: Keep Alive - El Lector Voraz
+
+on:
+  schedule:
+    # Se ejecuta cada 14 minutos para ganarle al timeout de 15 de Render
+    - cron: '*/14 * * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente para probar
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit Render Endpoint
+        run: |
+          curl -I https://libreria-el-lector-voraz.onrender.com/healthcheck
