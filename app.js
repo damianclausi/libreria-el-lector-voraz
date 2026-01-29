@@ -3,6 +3,12 @@ const path = require('path');
 const session = require('express-session');
 const app = express();
 
+// Ruta simple para monitoreo y keep-alive
+app.get('/healthcheck', (req, res) => {
+  res.status(200).send('Servidor Activo');
+});
+
+
 // Cargar variables de entorno desde .env
 require('dotenv').config();
 
@@ -64,11 +70,6 @@ app.use('/api/utileria', requireAuth, require('./routes/api/utileria'));
 app.use('/api/cafeteria', requireAuth, require('./routes/api/cafeteria'));
 app.use('/api/ventas', requireAuth, require('./routes/api/ventas'));
 app.use('/api/usuarios', requireAuth, require('./routes/api/usuarios')); // API de usuarios
-
-// Ruta simple para monitoreo y keep-alive
-app.get('/healthcheck', (req, res) => {
-  res.status(200).send('Servidor Activo');
-});
 
 // Puerto
 const PORT = process.env.PORT || 3000;
