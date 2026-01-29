@@ -28,6 +28,7 @@
 - [Uso](#uso)
 - [Sistema de Permisos](#sistema-de-permisos)
 - [Testing](#testing)
+- [Mantenimiento (Render Keep-Alive)](#mantenimiento-render-keep-alive)
 
 ---
 
@@ -216,3 +217,11 @@ npm test
 - **Mocking**: Configuración de entorno de prueba aislado en `jest.setup.js`.
 
 ---
+
+## Mantenimiento (Render Keep-Alive)
+Para evitar que la instancia gratuita de **Render** entre en modo de hibernación despues de 15 minutos de inactividad, el sistema incluye:
+
+- **Ruta de Healthcheck**: Endpoint ligero en `/healthcheck` que retorna un estado 200.
+- **GitHub Action**: Un workflow automatizado (`.github/workflows/keep_alive.yml`) que realiza un ping a la aplicación cada 14 minutos.
+
+Esto asegura que el sistema esté siempre listo para su uso sin demoras de reactivación.
