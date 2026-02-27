@@ -2,9 +2,10 @@ name: Keep Alive - El Lector Voraz
 
 on:
   schedule:
-    # Se ejecuta cada 14 minutos para ganarle al timeout de 15 de Render
-    - cron: '*/14 * * * *'
-  workflow_dispatch: # Permite ejecutarlo manualmente para probar
+    # Se ejecuta cada 14 minutos, pero solo entre las 09:00 y las 00:59 UTC
+    # (Equivale a 06:00 a 22:00 en Argentina/Chile)
+    - cron: '*/14 9-23,0 * * *'
+  workflow_dispatch: 
 
 jobs:
   ping:
